@@ -39,6 +39,8 @@ const JobList = () => {
               <Button
                 sx={{ pl: "1rem", pr: "1rem" }}
                 onClick={() => handleGoToDetails(e)}
+                color="secondary"
+                variant="outlined"
               >
                 Details
               </Button>

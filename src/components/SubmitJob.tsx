@@ -11,12 +11,10 @@ import { useState } from "react";
 import { convertDateToUnixTimestamp } from "../function/convertDateToUnixTimestamp";
 import { Box, Container } from "@mui/material";
 
-const NewJobInput = () => {
+const SubmitJob = () => {
   const [open, setOpen] = useState(false);
 
-  const [name, setName] = useState("");
-  const [pay, setPay] = useState<string>("");
-  const [date, setDate] = useState<Dayjs | null>(null);
+  const [submissionUrl, setSubmissionUrl] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
   const handleClickOpen = () => {
@@ -27,59 +25,42 @@ const NewJobInput = () => {
     setOpen(false);
   };
 
-  const handleSubmit = () => {
-    if (date) {
-      const unixDate = convertDateToUnixTimestamp(date);
-      const floatPay = parseFloat(pay);
-    }
-  };
+  const handleSubmit = () => {};
 
   return (
     <Container>
-      <Box sx={{ position: "relative", minHeight: "4rem" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", minHeight: "4rem" }}
+      >
         <Button
           variant="contained"
           onClick={handleClickOpen}
           color="secondary"
-          sx={{ position: "absolute", right: 0 }}
+          sx={{ margin: "2rem" }}
         >
-          Post New Job
+          Submit Job
         </Button>
       </Box>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Post a Job</DialogTitle>
+      <Dialog open={open} onClose={handleClose} sx={{}}>
+        <DialogTitle>Submit Job</DialogTitle>
         <DialogContent>
           <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Job name"
-            type="email"
+            id="submissionUrl"
+            label="Submission"
             fullWidth
-            variant="standard"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-          <TextField
-            margin="dense"
-            id="pay"
-            label="Pay (ETH)"
-            fullWidth
-            variant="standard"
-            value={pay}
-            onChange={(event) => setName(event.target.value)}
-          />
-          <DatePicker
-            label="Deadline"
-            value={date}
-            onChange={(newValue) => setDate(newValue)}
+            value={submissionUrl}
+            onChange={(event) => {
+              setSubmissionUrl(event.target.value);
+            }}
             sx={{ mt: "1rem" }}
           />
           <TextField
             id="description"
             label="Description"
             value={description}
-            onChange={(event) => setDescription(event.target.value)}
+            onChange={(event) => {
+              setDescription(event.target.value);
+            }}
             fullWidth
             multiline
             rows={4}
@@ -88,11 +69,11 @@ const NewJobInput = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Post</Button>
+          <Button onClick={handleClose}>Submit</Button>
         </DialogActions>
       </Dialog>
     </Container>
   );
 };
 
-export default NewJobInput;
+export default SubmitJob;
