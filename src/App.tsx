@@ -17,7 +17,6 @@ function App() {
   }, []);
 
   const wallet = getWalletAddress(web3);
-  console.log(wallet);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

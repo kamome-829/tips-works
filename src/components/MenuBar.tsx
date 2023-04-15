@@ -29,7 +29,7 @@ const MenuBar = () => {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href="/" underline="none" color="inherit">
-              Tips Works
+              Tips Work
             </Link>
           </Typography>
           <Button color="inherit" onClick={handleClick}>
