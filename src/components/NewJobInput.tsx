@@ -88,7 +88,7 @@ const NewJobInput = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Post</Button>
+          <Button onClick={handleSubmit}>Post</Button>
         </DialogActions>
       </Dialog>
     </Container>
