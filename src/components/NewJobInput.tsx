@@ -7,11 +7,16 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Dayjs } from "dayjs";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { convertDateToUnixTimestamp } from "../function/convertDateToUnixTimestamp";
 import { Box, Container } from "@mui/material";
+import Job from "../types/jobType";
 
-const NewJobInput = () => {
+interface Props {
+  setJobList: React.Dispatch<SetStateAction<Job[]>>;
+}
+
+const NewJobInput: React.FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
 
   const [name, setName] = useState("");
@@ -30,7 +35,18 @@ const NewJobInput = () => {
   const handleSubmit = () => {
     if (date) {
       const unixDate = convertDateToUnixTimestamp(date);
-      const intPay = parseInt(pay) * 10 ** 23;
+      const stringDate = date.format("MMMM D, YYYY");
+      const intPay = parseFloat(pay) * 10 ** 23;
+      props.setJobList((prevJobList: Job[]) => [
+        {
+          id: Math.random(),
+          name: name,
+          description: description,
+          pay: intPay,
+          date: stringDate,
+        },
+        ...prevJobList,
+      ]);
     }
   };
 
@@ -50,7 +66,6 @@ const NewJobInput = () => {
         <DialogTitle>Post a Job</DialogTitle>
         <DialogContent>
           <TextField
-            autoFocus
             margin="dense"
             id="name"
             label="Job name"
@@ -67,7 +82,7 @@ const NewJobInput = () => {
             fullWidth
             variant="standard"
             value={pay}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setPay(event.target.value)}
           />
           <DatePicker
             label="Deadline"

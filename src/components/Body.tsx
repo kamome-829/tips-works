@@ -1,8 +1,12 @@
 import { Box, Container } from "@mui/material";
 import JobList from "./JobList";
 import NewJobInput from "./NewJobInput";
+import { useState } from "react";
+import { jobs } from "../jobExample/jobs";
 
 const Body = () => {
+  const [jobList, setJobList] = useState(jobs);
+
   return (
     <Container>
       <Box
@@ -16,8 +20,8 @@ const Body = () => {
       >
         Job list
       </Box>
-      <NewJobInput />
-      <JobList />
+      <NewJobInput setJobList={setJobList} />
+      <JobList jobList={jobList} />
     </Container>
   );
 };
