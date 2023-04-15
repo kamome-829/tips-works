@@ -6,8 +6,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { connectWallet } from "../function/connectWallet";
+import { Link } from "@mui/material";
 
 const MenuBar = () => {
+  const handleClick = () => {
+    connectWallet();
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -22,9 +28,13 @@ const MenuBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Tips Works
+            <Link href="/" underline="none" color="inherit">
+              Tips Works
+            </Link>
           </Typography>
-          <Button color="inherit">Connect Wallet</Button>
+          <Button color="inherit" onClick={handleClick}>
+            Connect Wallet
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
