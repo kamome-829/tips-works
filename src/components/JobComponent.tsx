@@ -25,6 +25,7 @@ const JobComponent: React.FC = () => {
               justifyContent: "center",
             }}
           >
+            <Typography>Deadline: {job.date}</Typography>
             <Typography>Pay: {job.pay} ETH</Typography>
             <SubmitJob />
           </Box>
