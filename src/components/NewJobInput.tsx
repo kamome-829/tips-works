@@ -37,12 +37,13 @@ const NewJobInput: React.FC<Props> = (props) => {
       const unixDate = convertDateToUnixTimestamp(date);
       const stringDate = date.format("MMMM D, YYYY");
       const intPay = parseFloat(pay) * 10 ** 23;
+      const intPayForDemo = parseFloat(pay);
       props.setJobList((prevJobList: Job[]) => [
         {
           id: Math.random(),
           name: name,
           description: description,
-          pay: intPay,
+          pay: intPayForDemo,
           date: stringDate,
         },
         ...prevJobList,
