@@ -30,7 +30,7 @@ const NewJobInput = () => {
   const handleSubmit = () => {
     if (date) {
       const unixDate = convertDateToUnixTimestamp(date);
-      const floatPay = parseFloat(pay);
+      const intPay = parseInt(pay) * 10 ** 23;
     }
   };
 
