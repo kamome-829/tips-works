@@ -2,15 +2,22 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import { jobs } from "../jobExample/jobs";
 import { useNavigate } from "react-router-dom";
 import Job from "../types/jobType";
+import { useEffect, useState } from "react";
 
-const JobList = () => {
+interface Props {
+  jobList: Job[];
+}
+
+const JobList: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const handleGoToDetails = (job: Job) => {
     navigate(`/job/${job.id}`, { state: { job: job } });
   };
+
+  useEffect(() => {}, []);
   return (
     <Container>
-      {jobs.map((e: Job) => {
+      {props.jobList.map((e: Job) => {
         return (
           <Box
             key={e.id}
@@ -27,7 +34,7 @@ const JobList = () => {
                 sx={{
                   pl: "1rem",
                   pr: "1rem",
-                  maxWidth: "55%",
+                  maxWidth: "40%",
                   overflow: "hidden",
                 }}
               >
@@ -36,6 +43,7 @@ const JobList = () => {
               <Typography sx={{ pl: "1rem", pr: "1rem" }}>
                 {e.pay} ETH
               </Typography>
+              <Typography sx={{ pl: "1rem", pr: "1rem" }}>{e.date}</Typography>
               <Button
                 sx={{ pl: "1rem", pr: "1rem" }}
                 onClick={() => handleGoToDetails(e)}

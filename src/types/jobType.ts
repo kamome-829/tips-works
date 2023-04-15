@@ -3,6 +3,7 @@ interface Job {
   name: string;
   description: string;
   pay: number;
+  date: string;
 }
 
 export default Job;
