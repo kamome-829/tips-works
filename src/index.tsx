@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import MenuBar from "./components/MenuBar";
 import JobComponent from "./components/JobComponent";
 
 const root = ReactDOM.createRoot(
@@ -24,7 +23,6 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <MenuBar />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
