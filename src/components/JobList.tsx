@@ -27,16 +27,20 @@ const JobList = () => {
                 sx={{
                   pl: "1rem",
                   pr: "1rem",
-                  maxWidth: "60%",
+                  maxWidth: "55%",
                   overflow: "hidden",
                 }}
               >
                 {e.description}
               </Typography>
-              <Typography sx={{ pl: "1rem", pr: "1rem" }}>{e.pay} $</Typography>
+              <Typography sx={{ pl: "1rem", pr: "1rem" }}>
+                {e.pay} ETH
+              </Typography>
               <Button
                 sx={{ pl: "1rem", pr: "1rem" }}
                 onClick={() => handleGoToDetails(e)}
+                color="secondary"
+                variant="outlined"
               >
                 Details
               </Button>
