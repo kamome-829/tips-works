@@ -25,7 +25,9 @@ const SubmitJob = () => {
     setOpen(false);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    setOpen(false);
+  };
 
   return (
     <Container>

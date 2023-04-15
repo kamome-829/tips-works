@@ -49,6 +49,7 @@ const NewJobInput: React.FC<Props> = (props) => {
         ...prevJobList,
       ]);
     }
+    setOpen(false);
   };
 
   return (
